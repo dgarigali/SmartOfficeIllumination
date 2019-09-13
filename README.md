@@ -14,7 +14,7 @@ This cooperative distributed control system is composed by: the Arduino nodes (l
 
 ## Arduino code
 
-Besided the .ino code, three c++ libraries were developed:
+Besides the .ino code, three c++ libraries were developed:
 
 **lum_system:** contains the methods to [calibrate the LDR](https://www.instructables.com/id/Measuring-Light-Using-Light-Sensor/), read LDR values and compute the I2C data
 
@@ -42,11 +42,15 @@ Then, to obtain the time constant as a function of the illuminance, we use linea
 
 ![Screenshot](images/linear_interpolation.png)
 
+**NOTE:** in the utils/simulator_tuning folder, there are the Arduino and Matlab codes for obtaining the simulator coefficients.
+
 ### PI Controller
 
 To calibrate the feedback controller (i.e. PI controller), we assume it is a 1st order system caracterized by its static gain and time constant. Hence, the PI constants (kp and kp, lines 48-49 of .ino file) can be obtained using the Matlab function [pidtune](https://www.mathworks.com/help/control/ref/pidtune.html). Probably, you will need to adjust this parameters until reaching a dynamic characteristics as the one below (with low overshoot and low stabilization time).
 
 ![Screenshot](images/dynamic_response.png)
+
+**NOTE:** in the utils/pi_tuning folder, there are the Arduino and Matlab codes for obtaining the PI parameters.
 
 ## EEPROM configuration
 
