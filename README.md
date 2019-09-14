@@ -83,3 +83,9 @@ To clean the repo:
 ```
 make clean
 ```
+
+## Graphical User Interface(GUI)
+
+The arduino program prints, through serial, some messages about the LDR illuminance and the LED actuation voltage over the time. Besides that, it is capable of receiving messages for defining a new desired illuminance value and the cost of the consensus algorithm. In order to display all this info in a more fashionable manner, a Matlab based GUI was developed.
+
+![Screenshot](images/GUI.png)
