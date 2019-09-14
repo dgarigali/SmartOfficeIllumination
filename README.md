@@ -16,11 +16,11 @@ This cooperative distributed control system is composed by: the Arduino nodes (l
 
 Besides the .ino code, three c++ libraries were developed:
 
-**lum_system:** contains the methods to [calibrate the LDR](https://www.instructables.com/id/Measuring-Light-Using-Light-Sensor/), read LDR values and compute the I2C data
+**lum_system:** contains the methods to [calibrate the LDR](https://www.instructables.com/id/Measuring-Light-Using-Light-Sensor/), read LDR values and compute the I2C data. After calibrating, change the values "m" and "b" on lines 20-21 of the .ino file.
 
-**luminaire_controller:** contains the methods of the individual local luminaire controller consisting on a PI controller with feedforward and anti-windup (check the next section to see how to calibrate this controller)
+**luminaire_controller:** contains the methods of the individual local luminaire controller consisting on a PI controller with feedforward and anti-windup (check the next section to see how to calibrate this controller).
 
-**dist_controller:** the distributed global controller is based on the [consensus algorithm](https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335597775/consensus.pdf) via the Alternating Direction Method of Multipliers (ADMM) with the goal of minimizing a global cost function based on the energy consumption
+**dist_controller:** the distributed global controller is based on the [consensus algorithm](https://fenix.tecnico.ulisboa.pt/downloadFile/1689468335597775/consensus.pdf) via the Alternating Direction Method of Multipliers (ADMM) with the goal of minimizing a global cost function based on the energy consumption.
 
 ## Local luminaire controller
 
@@ -54,4 +54,9 @@ To calibrate the feedback controller (i.e. PI controller), we assume it is a 1st
 
 ## EEPROM configuration
 
-Before being fully able to test the arduino code, you need to program the values on addresses 0 and 1 of the EEPROM of each Arduino. On address 0, you must insert the I2C address (unique for each node) and on address 1 you must insert the number of nodes on the system (same for all nodes). 
+Before being fully able to test the arduino code, you need to program the values on addresses 0 and 1 of the EEPROM of each Arduino. On address 0, you must insert the I2C address (unique for each node) and on address 1 you must insert the node ID (0 if is the master, >0 if is it a slave)
+
+**NOTE:** in the utils/EEPROM folder, there is the Arduino code for programming the EEPROM
+
+## Raspberry Pi
+
