@@ -60,3 +60,26 @@ Before being fully able to test the arduino code, you need to program the values
 
 ## Raspberry Pi
 
+The Raspberry Pi code consists on a C++ server using the TCP-IP protocol and asynchronous I/O classes from [Boost’s ASIO library](https://www.boost.org/doc/libs/1_66_0/doc/html/boost_asio.html). The TCP-IP server listens for connections at port 17000 and serves multiple clients. The server is able to send and receive data from the client in string format:
+
+![Screenshot](images/commands.png)
+
+To install the Boost Library:
+```
+sudo apt-get install libboost-all-dev
+```
+
+To run the server:
+```
+make server
+```
+
+To run the client:
+```
+make client
+```
+
+To clean the repo:
+```
+make clean
+```
